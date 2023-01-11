@@ -6,4 +6,4 @@ Html, Css, javaScript
 
 ![](ekran1.gif)
 
-![](ekran2.mp4)
+![](ekran2.gif)
