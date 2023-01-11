@@ -1,0 +1,329 @@
+/*varsayılan gelen sitiller üzerinde değişiklik*/
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    user-select: none;
+    /* body ile kullanıcı yazılarını seçmesin*/
+}
+
+/*header alanı*/
+header {
+    background-color: yellow;
+    min-height: 100vh;
+    background: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(./okul.jpg);
+    /* siyah renkten siyah renge gitsin dedik arkada  
+    bir gölgelik oluşsun gibi oldu resmin beyazlığını aldı*/
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    /* relative  herhangi bir düzenini bozmuyor ama  x,y,z,top,left,bottom açıldığı için eğer bir eleman bir elemanın üzerine bini
+    yorsa altta kalana relative denilir ki onunda pozisyonları aktifleşir.*/
+
+}
+
+nav {
+
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    /*aralarda boşluk olmadan dağıttı*/
+    align-items: center;
+    /* dikeyde hizaladı*/
+
+
+}
+
+nav img {
+    width: 100px;
+
+
+
+}
+
+.nav-links {
+
+    flex: 1;
+    /*tüm geri kala alanı buna verdi*/
+    text-align: right;
+    /*sağa yasladı*/
+
+}
+
+.nav-links ul li {
+
+    list-style: none;
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+
+    /*yokardan aşağıdan 8 sağdan soldan 12px verdik*/
+    /*  blok yap ama yan yana getir dedim */
+
+    /* bir elemana sonradan özellikler verilecekse before yada after 
+    bu elemana relative verilir sonradana gelene  absolite verilir*/
+
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+
+}
+
+.nav-links ul li a::after {
+    /* li lerin altını çizdmek için uyguladığımız yöntem*/
+    content: '';
+    background-color: red;
+    /*content: 'selam'; desk hepsinin sonuna selam koyar*/
+    width: 0;
+    height: 2px;
+    display: block;
+    /*yan yana değil alt alta getirmeyi sağladı*/
+    margin: auto;
+    transition: 0.5s;
+    position: absolute;
+    /* diyerek alttaki left ve bottomu verdim yani soldan aşağıdan başlayacak*/
+    left: 0;
+    bottom: 0;
+
+
+}
+
+.nav-links ul li a:hover::after {
+    /* yani  bunun üzerine hover geldiğinde 
+    sonrasında after  oluşsun width %100 olsun yaptım  content içeriktir  biz burda içeriği boş yazı yaptık sadece yükseklik vererek oluşturduk renk verdik
+    yani after dedik sonradan oluşacak  şeyi seçtik
+    */
+
+    width: 100%;
+
+}
+
+/*metin kutusu alamı*/
+.text-box {
+
+
+    width: 90%;
+    color: white;
+    text-align: center;
+    position: absolute;
+    /* ekrana göre önceki alana göre hesaplıyor kendi alanını saymıyor*/
+    top: 50%;
+    /* burada boşluk vermedi aslında yukarıdan ve soldan  yüzde 50 yerleştirdi içinde bulunduğu ekranı bazaldı*/
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*buşekilde tam ortalama sağladı*/
+}
+
+.text-box h1 {
+    font-size: 40px;
+
+}
+
+.text-box p {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    font-size: 15px;
+    color: white;
+    line-height: 20px;
+}
+
+.hero-button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    color: white;
+    border: 1px solid white;
+    padding: 10px 30px;
+
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+
+
+}
+
+.hero-button:hover {
+    border: 1px solid red;
+    background-color: red;
+    transition: 0.5s;
+}
+
+.bi {
+
+    display: none;
+    /*sakladık yerini de verdi tamamen yokmuş gibi yaptı*/
+
+}
+
+@media (max-width:768px) {
+    .text-box h1 {
+        font-size: 20px;
+    }
+
+
+
+    .nav-links ul li {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        background-color: red;
+        height: 100vh;
+        top: 0;
+        /*yukarı yasla dedim*/
+        right: 0;
+        /* genişliği kadar kaydırdım*/
+        /*0 deyince tam duvara yasladı ama -200 deyince sayfadan -200 dışarı kaydırı*/
+        width: 200px;
+        /* sağa yasladı*/
+        text-align: left;
+        /*yazıyı sola yasladı*/
+        z-index: 2;
+        /* kırmızı olan liste kısmını öne çıkardık*/
+        transition: 0.5s;
+
+
+    }
+
+
+    nav .bi {
+        display: block;
+        /* büyütüldüğü zaman kaldırmıştık şimdi görünür yaptık*/
+
+        color: white;
+        margin: 10px;
+        font-size: 25px;
+        cursor: pointer;
+
+    }
+}
+
+/*kurslar alanı*/
+.course {
+
+    width: 80%;
+    margin: auto;
+    /*direk ortaladı*/
+    text-align: center;
+    padding-top: 80px;
+}
+
+.course h1 {
+    font-size: 35px;
+}
+
+.course p {
+    color: #777;
+    font-size: 15px;
+    font-weight: 300;
+    /*kalınlık*/
+    line-height: 20px;
+    /*satırlar uzaklaştı*/
+    padding: 10px;
+
+}
+
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-col {
+    flex-basis: 30%;
+    /*hepsinin yüzde 30 yer kaplamasını istedim*/
+    background-color: rgb(233, 229, 222);
+
+    border-radius: 10px;
+    margin-bottom: 5%;
+    /*içinde bulunan elemanın yüzdeliğini alıyor*/
+    padding: 20px 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+
+}
+
+.course-col h3 {
+    margin: 10px 0;
+    /*yukardan aşağı ve saoldan sağa */
+}
+
+.course-col:hover {
+    box-shadow: 0 0 10px rgba(4, 9, 30, 0.3);
+}
+
+@media (max-width:768px) {
+    .row {
+        flex-direction: column;
+        /* burada 768 e kadar alt alta gelsin diye column yaptık display blok ta diyebilirsiniz*/
+
+    }
+}
+
+/*Yerleşkelerimiz*/
+.campus {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+
+}
+
+.campus-col {
+    flex-basis: 30%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 10px;
+
+}
+
+.campus-col img {
+    width: 100%;
+    display: block;
+}
+
+.layer {
+
+    position: absolute;
+    /*resmin altına gitti*/
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* bulunduğu alanmın yüzde yüzünü kapladı*/
+    transition: 0.5s;
+
+}
+
+.layer:hover {
+    background-color: rgb(200, 100, 50, 0.3);
+}
+
+.layer h3 {
+    opacity: 0;
+
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    bottom: 0;
+    /* absolute dedim ve aşağı indirdim*/
+    transition: 0.5s;
+
+}
+
+.layer:hover h3 {
+    /* layer in üzerine geldiğinizde h3 değiştir*/
+    bottom: 50%;
+    opacity: 1;
+}
